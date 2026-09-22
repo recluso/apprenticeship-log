@@ -1,5 +1,5 @@
 ---
-title: 'Week 2 — Python fundamentals'
+title: '15 September 2026 — Python fundamentals'
 description: 'PLACEHOLDER entry — replace with your real week 2 notes.'
 date: 2026-09-15
 tags: [python, fundamentals]

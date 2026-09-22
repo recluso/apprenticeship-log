@@ -10,11 +10,13 @@ and deployed as static assets on [Cloudflare Workers](https://developers.cloudfl
    `YYYY-MM-DD-short-title.md` (the date prefix keeps files sorted in your
    file browser, but the page's actual order comes from the `date`
    frontmatter field below).
-2. Add frontmatter and content, for example:
+2. Add frontmatter and content, for example. Entries aren't required to
+   map to a specific "week" — title them by date and topic so a
+   topic-driven entry (not tied to any week) reads just as naturally:
 
    ```md
    ---
-   title: 'Week 4 — Whatever you actually covered'
+   title: '29 September 2026 — Whatever you actually covered'
    description: 'One-line summary shown in the log list.'
    date: 2026-09-29
    tags: [automation, python]
@@ -43,13 +45,14 @@ automatically on `/projects/`.
 
 ```bash
 git add .
-git commit -m "Add week 4 log entry"
+git commit -m "Add 29 September log entry"
 git push
 ```
 
-Pushing to the repo's default branch (once you've connected this repo to
-Cloudflare Workers Git integration) triggers an automatic build + deploy.
-If you're deploying manually instead, see "Deploy" below.
+Pushing to `main` triggers [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml),
+which builds and deploys automatically via GitHub Actions — no manual step
+needed. See "Deploy" below only if you want to publish without pushing
+(e.g. to test a change before committing it).
 
 ## Local development
 
