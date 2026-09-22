@@ -1,5 +1,5 @@
 ---
-title: '22 September 2026 — Designing a prompt template, then using it to build this site'
+title: 'Designing a prompt template, then using it to build this site'
 description: 'How I structured an effective Claude prompt, then used it to scaffold, build, and deploy this site end-to-end.'
 date: 2026-09-22
 tags: [prompting, automation, tooling, cloudflare, ci-cd]

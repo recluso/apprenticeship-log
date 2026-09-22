@@ -1,5 +1,5 @@
 ---
-title: '08 September 2026 — Orientation & goal setting'
+title: 'Orientation & goal setting'
 description: 'PLACEHOLDER entry — replace with your real week 1 notes.'
 date: 2026-09-08
 tags: [orientation, apprenticeship]

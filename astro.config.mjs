@@ -10,6 +10,9 @@ export default defineConfig({
 			title: 'AI & Automation Apprenticeship Log',
 			description:
 				'Learning log, projects, and reflections from a UK AI & Automation Level 4 apprenticeship.',
+			components: {
+				PageTitle: './src/components/PageTitle.astro',
+			},
 			social: [
 				// PLACEHOLDER: point this at your own GitHub profile/repo, or remove it.
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com' },
