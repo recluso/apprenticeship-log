@@ -1,40 +1,48 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
-template: splash # Remove or comment out this line to display the site sidebar on this page.
+title: AI & Automation Apprenticeship Log
+description: Learning log, projects, and reflections from a UK AI & Automation Level 4 apprenticeship.
+template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
-  image:
-    file: ../../assets/houston.webp
+  tagline: >
+    PLACEHOLDER — replace with your own intro, e.g. "Documenting my journey
+    through the UK AI & Automation Level 4 apprenticeship: what I'm learning,
+    what I'm building, and how I'm getting on."
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: Read the learning log
+      link: /log/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
+    - text: See projects
+      link: /projects/
+      icon: rocket
       variant: minimal
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-## Next steps
+## About this site
+
+PLACEHOLDER — a paragraph or two about you, the apprenticeship programme,
+start/end dates, and what you're hoping to get out of documenting it here.
+This section is what mentors or employers will read first, so make it
+personal rather than generic.
+
+## What's here
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
+	<Card title="Learning Log" icon="pencil">
+		Dated, tagged entries — one per week (or per session) — covering what I
+		learned and how it went. See [/log/](/log/).
 	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
+	<Card title="Projects" icon="rocket">
+		Short write-ups of things I've built during the apprenticeship. See
+		[/projects/](/projects/).
 	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
+	<Card title="Resources & Glossary" icon="open-book">
+		Tools, links, and terms I keep coming back to. See
+		[/resources/](/resources/) and [/glossary/](/glossary/).
 	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
+	<Card title="Certifications" icon="seti:lock">
+		Certificates and milestones earned along the way. See
+		[/certifications/](/certifications/).
 	</Card>
 </CardGrid>

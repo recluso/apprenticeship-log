@@ -1,0 +1,11 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	// PLACEHOLDER — Cloudflare Worker names must be unique on your account;
+	// change this if "apprenticeship-log" is taken.
+	"name": "apprenticeship-log",
+	"compatibility_date": "2026-09-22",
+	"assets": {
+		"directory": "./dist",
+		"not_found_handling": "404-page"
+	}
+}

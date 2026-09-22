@@ -1,0 +1,80 @@
+---
+// Renders a chronological (newest-first) list of docs entries under a given
+// path prefix, e.g. "log" or "projects", with date + tags shown per entry.
+// Add a new entry by dropping a Markdown file with `date`/`tags` frontmatter
+// into that folder — this list picks it up automatically, no index editing.
+import { getCollection } from 'astro:content';
+
+interface Props {
+	prefix: string;
+	emptyMessage?: string;
+}
+
+const { prefix, emptyMessage = 'No entries yet — check back soon.' } = Astro.props;
+
+const all = await getCollection('docs');
+const entries = all
+	.filter((entry) => entry.id.startsWith(`${prefix}/`) && entry.id !== `${prefix}/index`)
+	.sort((a, b) => (b.data.date?.getTime() ?? 0) - (a.data.date?.getTime() ?? 0));
+---
+
+{entries.length === 0 && <p>{emptyMessage}</p>}
+
+<ul class="entry-list">
+	{entries.map((entry) => (
+		<li>
+			<a href={`/${entry.id}/`}>
+				<strong>{entry.data.title}</strong>
+			</a>
+			{entry.data.date && (
+				<span class="entry-date">
+					{entry.data.date.toLocaleDateString('en-GB', {
+						year: 'numeric',
+						month: 'short',
+						day: 'numeric',
+					})}
+				</span>
+			)}
+			{entry.data.tags && entry.data.tags.length > 0 && (
+				<span class="entry-tags">
+					{entry.data.tags.map((tag) => (
+						<code>{tag}</code>
+					))}
+				</span>
+			)}
+			{entry.data.description && <p class="entry-description">{entry.data.description}</p>}
+		</li>
+	))}
+</ul>
+
+<style>
+	.entry-list {
+		list-style: none;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		margin-block: 1.5rem;
+	}
+	.entry-list li {
+		border-bottom: 1px solid var(--sl-color-hairline);
+		padding-bottom: 1rem;
+	}
+	.entry-date {
+		color: var(--sl-color-gray-3);
+		font-size: 0.875rem;
+		margin-left: 0.75rem;
+	}
+	.entry-tags {
+		margin-left: 0.75rem;
+		display: inline-flex;
+		gap: 0.4rem;
+	}
+	.entry-tags code {
+		font-size: 0.75rem;
+	}
+	.entry-description {
+		margin: 0.35rem 0 0;
+		color: var(--sl-color-gray-2);
+	}
+</style>

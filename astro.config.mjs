@@ -4,21 +4,32 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://testdept.co.uk',
 	integrations: [
 		starlight({
-			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			title: 'AI & Automation Apprenticeship Log',
+			description:
+				'Learning log, projects, and reflections from a UK AI & Automation Level 4 apprenticeship.',
+			social: [
+				// PLACEHOLDER: point this at your own GitHub profile/repo, or remove it.
+				{ icon: 'github', label: 'GitHub', href: 'https://github.com' },
+			],
 			sidebar: [
 				{
-					label: 'Guides',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
-					],
+					label: 'Learning Log',
+					items: [{ autogenerate: { directory: 'log' } }],
+				},
+				{
+					label: 'Projects',
+					items: [{ autogenerate: { directory: 'projects' } }],
 				},
 				{
 					label: 'Reference',
-					items: [{ autogenerate: { directory: 'reference' } }],
+					items: [
+						{ label: 'Resources', slug: 'resources' },
+						{ label: 'Glossary', slug: 'glossary' },
+						{ label: 'Certifications', slug: 'certifications' },
+					],
 				},
 			],
 		}),
