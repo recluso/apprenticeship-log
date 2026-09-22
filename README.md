@@ -10,13 +10,14 @@ and deployed as static assets on [Cloudflare Workers](https://developers.cloudfl
    `YYYY-MM-DD-short-title.md` (the date prefix keeps files sorted in your
    file browser, but the page's actual order comes from the `date`
    frontmatter field below).
-2. Add frontmatter and content, for example. Entries aren't required to
-   map to a specific "week" — title them by date and topic so a
-   topic-driven entry (not tied to any week) reads just as naturally:
+2. Add frontmatter and content, for example. Titles are topic-only (the
+   date renders as a small badge above the heading, and drives sidebar
+   grouping) — so entries aren't required to map to a specific "week";
+   a topic-driven entry reads just as naturally:
 
    ```md
    ---
-   title: '29 September 2026 — Whatever you actually covered'
+   title: 'Whatever you actually covered'
    description: 'One-line summary shown in the log list.'
    date: 2026-09-29
    tags: [automation, python]
@@ -33,7 +34,8 @@ and deployed as static assets on [Cloudflare Workers](https://developers.cloudfl
    ```
 
 3. Save the file. It appears automatically at the top of `/log/` (sorted
-   newest-first by `date`) and in the sidebar — no other file needs editing.
+   newest-first by `date`), grouped into a "Week commencing DD/MM/YY"
+   section in the sidebar (Monday-starting) — no other file needs editing.
 4. Run `npm run dev` to preview locally before publishing.
 
 ## Adding a new project write-up

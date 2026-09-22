@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import { buildLogSidebarGroups } from './src/utils/logSidebar.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,7 +21,7 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: 'Learning Log',
-					items: [{ autogenerate: { directory: 'log' } }],
+					items: [{ label: 'Overview', slug: 'log' }, ...buildLogSidebarGroups()],
 				},
 				{
 					label: 'Projects',
