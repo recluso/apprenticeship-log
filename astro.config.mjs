@@ -14,10 +14,6 @@ export default defineConfig({
 			components: {
 				PageTitle: './src/components/PageTitle.astro',
 			},
-			social: [
-				// PLACEHOLDER: point this at your own GitHub profile/repo, or remove it.
-				{ icon: 'github', label: 'GitHub', href: 'https://github.com' },
-			],
 			sidebar: [
 				{
 					label: 'Learning Log',
