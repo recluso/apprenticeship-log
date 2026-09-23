@@ -3,6 +3,8 @@ title: 'Turning a security-update workflow into a reusable Claude Code skill'
 description: 'Patched a real set of Drupal vulnerabilities on a live client site, then captured the process as a saved skill so it can be triggered the same way next time.'
 date: 2026-09-23
 tags: [drupal, security, composer, automation, claude-code]
+cover: ../../../assets/covers/2026-09-23-drupal-security-check-skill.svg
+coverAlt: 'A terminal showing composer audit going from 12 vulnerabilities to 0, a green shield with a tick, and a saved skill card listing the steps: audit, branch, dry-run, update, verify.'
 ---
 
 ## What I did

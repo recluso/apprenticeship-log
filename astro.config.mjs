@@ -12,6 +12,7 @@ export default defineConfig({
 			description:
 				'Learning log, projects, and reflections from a UK AI & Automation Level 4 apprenticeship.',
 			components: {
+				Hero: './src/components/Hero.astro',
 				PageTitle: './src/components/PageTitle.astro',
 				ThemeProvider: './src/components/ThemeProvider.astro',
 			},

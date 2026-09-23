@@ -3,6 +3,8 @@ title: 'Designing a prompt template, then using it to build this site'
 description: 'How I structured an effective Claude prompt, then used it to scaffold, build, and deploy this site end-to-end.'
 date: 2026-09-22
 tags: [prompting, automation, tooling, cloudflare, ci-cd]
+cover: ../../../assets/covers/2026-09-22-prompt-template-and-deploying-this-site.svg
+coverAlt: 'A prompt template with Task, Context, Decision, Deploy and Constraints sections, handed off to a browser showing this site, deployed via a git push, build and live pipeline on Cloudflare Workers.'
 ---
 
 ## What I did
