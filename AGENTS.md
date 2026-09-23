@@ -11,6 +11,8 @@ Starlight, deployed as static assets on Cloudflare Workers.
   (build + `wrangler deploy`, using `CLOUDFLARE_API_TOKEN` /
   `CLOUDFLARE_ACCOUNT_ID` repo secrets). `npm run deploy` deploys manually.
   Only commit/push when the user asks — a push publishes the site.
+  Workflow: commit directly to `main` and push — no feature branches or
+  pull requests for this repo (the owner's preference).
 - **Log entries:** Markdown in `src/content/docs/log/`, named
   `YYYY-MM-DD-short-title.md`, with `title`, `description`, `date` and `tags`
   frontmatter. Titles are topic-only; the date renders as a badge
