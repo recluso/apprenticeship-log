@@ -1,12 +1,17 @@
 ---
 // Overrides Starlight's default PageTitle to show a small date badge above
 // the heading, for any doc entry with a `date` frontmatter field (log
-// entries, projects). Pages without a date (resources, glossary...) render
-// unchanged.
+// entries, projects), and the entry's `cover` graphic (if any) below it.
+// Pages without a date or cover (resources, glossary...) render unchanged.
+import { Image } from 'astro:assets';
 import Default from '@astrojs/starlight/components/PageTitle.astro';
 
 const { entry } = Astro.locals.starlightRoute;
-const date = (entry.data as { date?: Date }).date;
+const { date, cover, coverAlt } = entry.data as {
+	date?: Date;
+	cover?: ImageMetadata;
+	coverAlt?: string;
+};
 ---
 
 {
@@ -19,6 +24,19 @@ const date = (entry.data as { date?: Date }).date;
 <Default {...Astro.props}>
 	<slot />
 </Default>
+{
+	cover && (
+		<div class="entry-cover">
+			<Image
+				src={cover}
+				alt={coverAlt ?? ''}
+				width={560}
+				sizes="(min-width: 50rem) 30rem, 100vw"
+				loading="eager"
+			/>
+		</div>
+	)
+}
 
 <style>
 	.entry-date-badge {
@@ -30,5 +48,18 @@ const date = (entry.data as { date?: Date }).date;
 		border-radius: 999px;
 		padding: 0.2rem 0.75rem;
 		margin: 0 0 0.75rem;
+	}
+	.entry-cover {
+		width: min(100%, 30rem);
+		margin-top: 1.5rem;
+	}
+	/* :global because the <img> is rendered by the Image component, outside
+	   this component's scoped styles. */
+	.entry-cover :global(img) {
+		display: block;
+		width: 100%;
+		height: auto;
+		border-radius: 1rem;
+		box-shadow: var(--sl-shadow-md);
 	}
 </style>

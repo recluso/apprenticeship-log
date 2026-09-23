@@ -3,6 +3,8 @@ title: 'Building a week-grouped sidebar for this log'
 description: 'How the "Week commencing" sidebar groups work under the hood, and why it had to be built rather than configured.'
 date: 2026-09-22
 tags: [astro, starlight, javascript, automation]
+cover: ../../../assets/covers/2026-09-22-week-grouped-sidebar-navigation.svg
+coverAlt: 'A September calendar with the Monday column highlighted and a Sunday arrow jumping back to Monday, feeding into a sidebar grouped under Week commencing headings.'
 ---
 
 ## What I did

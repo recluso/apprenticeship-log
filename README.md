@@ -33,10 +33,36 @@ and deployed as static assets on [Cloudflare Workers](https://developers.cloudfl
    ...
    ```
 
-3. Save the file. It appears automatically at the top of `/log/` (sorted
-   newest-first by `date`), grouped into a "Week commencing DD/MM/YY"
+3. Save the file. If it has the newest `date`, it becomes the featured
+   entry at the top of the home page. It also appears automatically at the
+   top of `/log/` (sorted newest-first by `date`), grouped into a "Week commencing DD/MM/YY"
    section in the sidebar (Monday-starting) — no other file needs editing.
 4. Run `npm run dev` to preview locally before publishing.
+
+## Adding a cover image
+
+Any log entry or project can have a cover graphic. It's shown under the
+title on the entry's own page, and on the right of the home page banner
+while that entry is the latest one (above the text on phones).
+
+1. Put the image in `src/assets/covers/`, named after the entry
+   (e.g. `2026-09-29-short-title.svg`). SVG, PNG, JPG and WebP all work —
+   photos and screenshots are resized and compressed automatically. A
+   landscape 4:3 shape (e.g. 1120×840) fits the space best.
+2. Add two lines to the entry's frontmatter:
+
+   ```md
+   cover: ../../../assets/covers/2026-09-29-short-title.svg
+   coverAlt: 'One sentence describing what the image shows.'
+   ```
+
+   The path is relative to the Markdown file, so it's the same
+   `../../../assets/covers/` prefix for every log entry and project. If the
+   path is wrong the build fails with an error naming the file, so a typo
+   can't slip onto the live site.
+
+Entries without a `cover` still work — the banner just uses the full width
+for the text.
 
 ## Adding a new project write-up
 

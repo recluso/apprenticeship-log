@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1b1e2b"/>
+      <stop offset="1" stop-color="#11131b"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.8" cy="0.35" r="0.5">
+      <stop offset="0" stop-color="#8b95ff" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#8b95ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="560" height="420" rx="24" fill="url(#bg)"/>
+  <rect width="560" height="420" rx="24" fill="url(#glow)"/>
+
+  <!-- Prompt template document -->
+  <g transform="translate(36 36)">
+    <rect width="220" height="348" rx="12" fill="#232838" stroke="#3a4160"/>
+    <text x="18" y="30" fill="#8b93ad" font-size="12" font-family="ui-monospace, 'SF Mono', Menlo, monospace">prompt-template.md</text>
+    <line x1="0" y1="44" x2="220" y2="44" stroke="#3a4160"/>
+    <g font-size="11" font-weight="700" letter-spacing="0.06em">
+      <rect x="18" y="60" width="50" height="20" rx="5" fill="#8b95ff"/>
+      <text x="43" y="74" fill="#11131b" text-anchor="middle">TASK</text>
+      <rect x="18" y="86" width="150" height="6" rx="3" fill="#3a4160"/>
+
+      <rect x="18" y="106" width="74" height="20" rx="5" fill="#6fe3c8"/>
+      <text x="55" y="120" fill="#11131b" text-anchor="middle">CONTEXT</text>
+      <rect x="18" y="132" width="180" height="6" rx="3" fill="#3a4160"/>
+      <rect x="18" y="144" width="120" height="6" rx="3" fill="#3a4160"/>
+
+      <rect x="18" y="164" width="80" height="20" rx="5" fill="#f5b85a"/>
+      <text x="58" y="178" fill="#11131b" text-anchor="middle">DECISION</text>
+      <rect x="18" y="190" width="160" height="6" rx="3" fill="#3a4160"/>
+
+      <rect x="18" y="210" width="68" height="20" rx="5" fill="#c7a2ff"/>
+      <text x="52" y="224" fill="#11131b" text-anchor="middle">DEPLOY</text>
+      <rect x="18" y="236" width="140" height="6" rx="3" fill="#3a4160"/>
+      <rect x="18" y="248" width="170" height="6" rx="3" fill="#3a4160"/>
+
+      <rect x="18" y="268" width="106" height="20" rx="5" fill="#ff7a85"/>
+      <text x="71" y="282" fill="#11131b" text-anchor="middle">CONSTRAINTS</text>
+      <rect x="18" y="294" width="150" height="6" rx="3" fill="#3a4160"/>
+      <rect x="18" y="306" width="96" height="6" rx="3" fill="#3a4160"/>
+    </g>
+  </g>
+
+  <!-- Hand-off arrow -->
+  <path d="M270 160 C300 160 300 130 326 130" fill="none" stroke="#8b95ff" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/>
+  <path d="M320 122 L332 130 L320 138" fill="none" stroke="#8b95ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- The built site in a browser window -->
+  <g transform="translate(340 56)">
+    <rect width="186" height="148" rx="10" fill="#232838" stroke="#3a4160"/>
+    <circle cx="14" cy="14" r="4" fill="#ff7a85"/>
+    <circle cx="27" cy="14" r="4" fill="#f5b85a"/>
+    <circle cx="40" cy="14" r="4" fill="#6fe3c8"/>
+    <rect x="54" y="8" width="120" height="12" rx="6" fill="#11131b"/>
+    <text x="114" y="18" fill="#8b93ad" font-size="8.5" text-anchor="middle">testdept.co.uk</text>
+    <line x1="0" y1="28" x2="186" y2="28" stroke="#3a4160"/>
+    <rect x="10" y="40" width="44" height="98" rx="4" fill="#2b3145"/>
+    <rect x="16" y="48" width="30" height="5" rx="2.5" fill="#8b95ff"/>
+    <rect x="16" y="60" width="26" height="4" rx="2" fill="#4a5270"/>
+    <rect x="16" y="70" width="30" height="4" rx="2" fill="#4a5270"/>
+    <rect x="16" y="80" width="22" height="4" rx="2" fill="#4a5270"/>
+    <rect x="66" y="42" width="96" height="10" rx="3" fill="#e4e7f1"/>
+    <rect x="66" y="60" width="108" height="5" rx="2.5" fill="#4a5270"/>
+    <rect x="66" y="71" width="90" height="5" rx="2.5" fill="#4a5270"/>
+    <rect x="66" y="82" width="100" height="5" rx="2.5" fill="#4a5270"/>
+    <rect x="66" y="100" width="54" height="16" rx="8" fill="#8b95ff"/>
+  </g>
+
+  <!-- Push to deploy pipeline -->
+  <g transform="translate(340 238)" font-size="12" fill="#c9cdd8" text-anchor="middle">
+    <text x="93" y="0" fill="#8b93ad" font-size="12" font-family="ui-monospace, 'SF Mono', Menlo, monospace">git push</text>
+    <line x1="22" y1="44" x2="164" y2="44" stroke="#3a4160" stroke-width="2"/>
+    <circle cx="22" cy="44" r="16" fill="#2b3145" stroke="#8b95ff" stroke-width="2"/>
+    <circle cx="22" cy="44" r="5" fill="#8b95ff"/>
+    <text x="22" y="80">commit</text>
+    <circle cx="93" cy="44" r="16" fill="#2b3145" stroke="#c7a2ff" stroke-width="2"/>
+    <path d="M86 38 l7 6 l-7 6 M95 50 h6" fill="none" stroke="#c7a2ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="93" y="80">build</text>
+    <circle cx="164" cy="44" r="16" fill="#6fe3c8"/>
+    <path d="M156 44 l6 6 l10 -11" fill="none" stroke="#11131b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="164" y="80">live</text>
+    <!-- Hosted on Cloudflare Workers -->
+    <path d="M40 132 a7 7 0 0 1 1.5 -13.5 a9.5 9.5 0 0 1 17.5 -2.5 a6.5 6.5 0 0 1 8 8 a5.5 5.5 0 0 1 -1 8 z" fill="none" stroke="#f5b85a" stroke-width="2" stroke-linejoin="round"/>
+    <text x="74" y="130" fill="#8b93ad" font-size="12" text-anchor="start">Cloudflare Workers</text>
+  </g>
+</svg>
