@@ -64,6 +64,21 @@ while that entry is the latest one (above the text on phones).
 Entries without a `cover` still work — the banner just uses the full width
 for the text.
 
+## Attaching a downloadable file
+
+Put the file in `public/downloads/`, prefixed with the entry's date
+(e.g. `2026-09-24-study-guide.pdf`), then link to it from the entry. The
+`download` attribute makes browsers save it rather than open it:
+
+```md
+:::note[Study guide]
+<a href="/downloads/2026-09-24-study-guide.pdf" download>Download the study guide</a> (PDF).
+:::
+```
+
+Anything in `public/` is published as-is to the live site, so only add
+files that are fine to be public.
+
 ## Adding a new project write-up
 
 Same process, but in `src/content/docs/projects/` — it shows up

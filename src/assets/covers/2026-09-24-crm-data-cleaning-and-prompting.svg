@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1b1e2b"/>
+      <stop offset="1" stop-color="#11131b"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.3" cy="0.25" r="0.5">
+      <stop offset="0" stop-color="#8b95ff" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#8b95ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="560" height="420" rx="24" fill="url(#bg)"/>
+  <rect width="560" height="420" rx="24" fill="url(#glow)"/>
+
+  <!-- Column profile of the export -->
+  <g transform="translate(36 36)">
+    <rect width="236" height="172" rx="12" fill="#232838" stroke="#3a4160"/>
+    <text x="18" y="30" fill="#8b93ad" font-size="12" font-family="ui-monospace, 'SF Mono', Menlo, monospace">account-export.csv</text>
+    <line x1="0" y1="44" x2="236" y2="44" stroke="#3a4160"/>
+    <text x="18" y="84" fill="#e4e7f1" font-size="30" font-weight="700">339</text>
+    <text x="80" y="84" fill="#8b93ad" font-size="13">columns</text>
+    <!-- 137 empty / ~76 constant / ~76 copies & other / ~50 useful, scaled to 200px -->
+    <rect x="18" y="100" width="81" height="14" rx="3" fill="#ff7a85"/>
+    <rect x="101" y="100" width="44" height="14" fill="#f5b85a"/>
+    <rect x="147" y="100" width="42" height="14" fill="#4a5270"/>
+    <rect x="191" y="100" width="27" height="14" rx="3" fill="#6fe3c8"/>
+    <g font-size="11">
+      <circle cx="24" cy="134" r="4" fill="#ff7a85"/>
+      <text x="34" y="138" fill="#c9cdd8">137 empty</text>
+      <circle cx="120" cy="134" r="4" fill="#f5b85a"/>
+      <text x="130" y="138" fill="#c9cdd8">~76 one value</text>
+      <circle cx="24" cy="156" r="4" fill="#4a5270"/>
+      <text x="34" y="160" fill="#c9cdd8">copies, other</text>
+      <circle cx="120" cy="156" r="4" fill="#6fe3c8"/>
+      <text x="130" y="160" fill="#c9cdd8">~40–60 useful</text>
+    </g>
+  </g>
+
+  <!-- Seven-part prompt template -->
+  <g transform="translate(288 36)">
+    <rect width="236" height="172" rx="12" fill="#232838" stroke="#3a4160"/>
+    <text x="18" y="30" fill="#8b93ad" font-size="12" font-family="ui-monospace, 'SF Mono', Menlo, monospace">prompt-template.md</text>
+    <line x1="0" y1="44" x2="236" y2="44" stroke="#3a4160"/>
+    <g font-size="10.5" font-weight="700" letter-spacing="0.05em" fill="#11131b" text-anchor="middle">
+      <rect x="18" y="60" width="54" height="22" rx="5" fill="#8b95ff"/>
+      <text x="45" y="75">ROLE</text>
+      <rect x="78" y="60" width="72" height="22" rx="5" fill="#8b95ff"/>
+      <text x="114" y="75">CONTEXT</text>
+      <rect x="156" y="60" width="60" height="22" rx="5" fill="#8b95ff"/>
+      <text x="186" y="75">INPUT</text>
+
+      <rect x="18" y="92" width="54" height="22" rx="5" fill="#c7a2ff"/>
+      <text x="45" y="107">TASK</text>
+      <rect x="78" y="92" width="60" height="22" rx="5" fill="#ff7a85"/>
+      <text x="108" y="107">RULES</text>
+      <rect x="144" y="92" width="72" height="22" rx="5" fill="#f5b85a"/>
+      <text x="180" y="107">OUTPUT</text>
+
+      <rect x="18" y="124" width="60" height="22" rx="5" fill="#6fe3c8"/>
+      <text x="48" y="139">CHECK</text>
+    </g>
+    <text x="88" y="139" fill="#8b93ad" font-size="11">ask, don't guess</text>
+  </g>
+
+  <!-- Cleaning workflow, coloured by risk tier -->
+  <g transform="translate(36 224)">
+    <rect width="488" height="160" rx="12" fill="#232838" stroke="#8b95ff" stroke-opacity="0.55"/>
+    <text x="18" y="30" fill="#e4e7f1" font-size="15" font-weight="600">Cleaning workflow</text>
+    <g font-size="11" fill="#8b93ad">
+      <text x="264" y="30">risk:</text>
+      <circle cx="304" cy="26" r="4" fill="#6fe3c8"/><text x="312" y="30">green</text>
+      <circle cx="360" cy="26" r="4" fill="#f5b85a"/><text x="368" y="30">amber</text>
+      <circle cx="418" cy="26" r="4" fill="#ff7a85"/><text x="426" y="30">red</text>
+    </g>
+    <line x1="44" y1="70" x2="444" y2="70" stroke="#3a4160" stroke-width="2"/>
+    <g font-size="11" fill="#c9cdd8" text-anchor="middle">
+      <circle cx="44" cy="70" r="9" fill="#8b95ff"/>
+      <text x="44" y="96">purpose</text>
+      <circle cx="111" cy="70" r="9" fill="#8b95ff"/>
+      <text x="111" y="96">reduce</text>
+      <circle cx="177" cy="70" r="9" fill="#8b95ff"/>
+      <text x="177" y="96">filter</text>
+      <circle cx="244" cy="70" r="9" fill="#6fe3c8"/>
+      <text x="244" y="96">standardise</text>
+      <circle cx="311" cy="70" r="9" fill="#f5b85a"/>
+      <text x="311" y="96">validate</text>
+      <circle cx="377" cy="70" r="9" fill="#ff7a85"/>
+      <text x="377" y="96">de-dupe</text>
+      <circle cx="444" cy="70" r="9" fill="#8b95ff"/>
+      <text x="444" y="96">document</text>
+    </g>
+    <line x1="18" y1="114" x2="470" y2="114" stroke="#3a4160"/>
+    <g font-size="12" text-anchor="middle">
+      <text x="244" y="141" fill="#8b93ad">AI <tspan fill="#8b95ff" font-weight="700">proposes</tspan>  →  person <tspan fill="#6fe3c8" font-weight="700">approves</tspan>  →  CRM <tspan fill="#c7a2ff" font-weight="700">applies</tspan>  →  AI <tspan fill="#f5b85a" font-weight="700">verifies</tspan></text>
+    </g>
+  </g>
+</svg>
