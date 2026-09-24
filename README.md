@@ -39,6 +39,30 @@ and deployed as static assets on [Cloudflare Workers](https://developers.cloudfl
    section in the sidebar (Monday-starting) — no other file needs editing.
 4. Run `npm run dev` to preview locally before publishing.
 
+## Time spent and KSBs
+
+Two optional frontmatter fields support the apprenticeship paperwork:
+
+```md
+time: 2h 30m
+ksbs:
+  - code: S8
+    why: 'Built a seven-part prompt template and refined it by testing it on real data.'
+  - code: K2
+    why: 'Kept personal data out of the AI tool, in line with data protection rules.'
+```
+
+- **`time`** — hours and minutes spent (`2h 30m`, `45m` or `3h`). It shows
+  next to the date, and all entries are totalled on
+  [`/otj-log/`](https://testdept.co.uk/otj-log/), which also offers a CSV
+  download for the off-the-job hours spreadsheet.
+- **`ksbs`** — the Knowledge, Skills and Behaviours from the apprenticeship
+  standard (ST1512, listed in `src/data/ksbs.ts`) that the entry evidences,
+  each with a sentence on why. Badges appear under the title, the
+  explanations at the end of the entry, and overall coverage on
+  [`/ksbs/`](https://testdept.co.uk/ksbs/). An unknown code or a badly
+  formatted time stops the build with an error naming the entry.
+
 ## Adding a cover image
 
 Any log entry or project can have a cover graphic. It's shown under the

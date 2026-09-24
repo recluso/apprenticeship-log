@@ -2,9 +2,27 @@
 title: 'Turning a security-update workflow into a reusable Claude Code skill'
 description: 'Patched a real set of Drupal vulnerabilities on a live client site, then captured the process as a saved skill so it can be triggered the same way next time.'
 date: 2026-09-23
+time: 2h 30m
 tags: [drupal, security, composer, automation, claude-code]
 cover: ../../../assets/covers/2026-09-23-drupal-security-check-skill.svg
 coverAlt: 'A terminal showing composer audit going from 12 vulnerabilities to 0, a green shield with a tick, and a saved skill card listing the steps: audit, branch, dry-run, update, verify.'
+ksbs:
+  - code: K14
+    why: "Ran `composer update --dry-run` before changing anything, then re-ran the audit afterwards to confirm zero vulnerabilities remained, rather than trusting that version numbers had moved."
+  - code: K15
+    why: "Built human checkpoints into the automated skill: it stops before pushing further than asked, and overwriting the local credentials file was treated as a decision for me, not a default."
+  - code: K18
+    why: "Audited every installed package against its locked version, found 12 exploitable vulnerabilities across 7 packages and fixed them, carrying each advisory's severity through so critical issues weren't lost among minor ones."
+  - code: K23
+    why: "When the dry run proposed removing an unused package, I searched the custom code before accepting it rather than assuming Composer knew everything — a small guard against over-trusting automated suggestions."
+  - code: S1
+    why: "Fixed a stale credential for a private repository by issuing a fresh token from an already-authenticated session rather than guessing at the old one, and asked before overwriting the credentials file."
+  - code: S6
+    why: "Mapped the manual workflow — find vulnerabilities, branch, dry-run, fix, verify, commit, stop — and separated general principles from repo-specific steps before turning it into a reusable skill."
+  - code: S7
+    why: "Configured automation tools to do the work next time: a saved Claude Code skill, and a scheduled watch that checked for the pending release infrequently at first and more often once the release window opened."
+  - code: S12
+    why: "Improved the skill from feedback: when asked whether it covered the periodic release check, I found the gap and added it; I also traced a surprising config change to confirm it was cosmetic before committing."
 ---
 
 ## What I did

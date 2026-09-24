@@ -20,6 +20,26 @@ Starlight, deployed as static assets on Cloudflare Workers.
   sidebar groups (`src/utils/logSidebar.mjs`, Monday-starting). Entries
   usually use "What I did / What I learned / Reflection" sections.
 - **Project write-ups:** `src/content/docs/projects/`.
+- **Log template:** `src/content/docs/log-template.md` (at `/log-template/`)
+  is a worked example of an entry using every feature. It lives outside
+  `log/` so it isn't counted in the OTJ log, KSB tracker or home banner.
+  When entry features change, update the template to match.
+- **KSBs (apprenticeship standard):** the owner is on ST1512 *AI and
+  automation practitioner*, Level 4, v2.1. All 64 KSBs (official wording
+  plus short labels) live in `src/data/ksbs.ts`. When writing or adding an
+  entry, analyse it and add a `ksbs:` list to its frontmatter — each item a
+  `code` and a `why`. Be selective: only KSBs the entry gives clear,
+  specific evidence for (typically 4–8), not everything loosely related.
+  Each `why` is one or two sentences, first person, tied to what the entry
+  actually says was done or learned (real steps, tools, numbers) — never
+  generic restatements of the KSB. `why` may use `code` and *emphasis*.
+  Badges appear under the title, explanations at the end of the entry
+  (`KsbSection.astro`), and coverage on `/ksbs/` (`KsbTracker.astro`).
+- **Time (OTJ):** `time: 2h 30m` (or `45m`, `3h`) records time spent, for
+  the owner's off-the-job log. Default to `time: 2h 30m` on every new entry
+  (the owner's choice) unless they give a different time, and mention the
+  default when adding it so they can correct it. Totals and a CSV export
+  are on `/otj-log/` and `/otj-log.csv`.
 - **Cover graphics:** every log entry and project should have a cover.
   When writing or adding an entry, also draw one: a hand-authored SVG in
   `src/assets/covers/<entry-filename>.svg`, referenced via `cover:` and

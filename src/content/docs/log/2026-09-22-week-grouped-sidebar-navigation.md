@@ -2,9 +2,21 @@
 title: 'Building a week-grouped sidebar for this log'
 description: 'How the "Week commencing" sidebar groups work under the hood, and why it had to be built rather than configured.'
 date: 2026-09-22
+time: 2h 30m
 tags: [astro, starlight, javascript, automation]
 cover: ../../../assets/covers/2026-09-22-week-grouped-sidebar-navigation.svg
 coverAlt: 'A September calendar with the Monday column highlighted and a Sunday arrow jumping back to Monday, feeding into a sidebar grouped under Week commencing headings.'
+ksbs:
+  - code: K5
+    why: "The goal was to remove a recurring manual job: hand-editing the sidebar every week would have undone the automatic listing. I pushed that recurring cost into a one-off piece of build code instead."
+  - code: S7
+    why: "Adapted the existing tool rather than replacing it — generated groups are plugged into Starlight's own sidebar configuration, so the rest of the site works exactly as before."
+  - code: S9
+    why: "Wrote a helper that reads every entry file, parses its frontmatter with `gray-matter`, works out the Monday that starts each entry's week (including the Sunday edge case) and groups and sorts the results."
+  - code: S27
+    why: "Recognised where configuration stops and code starts: Starlight's sidebar can't group by a date in frontmatter, so I matched the need (weekly groups with no upkeep) to what the framework could and couldn't do before choosing an approach."
+  - code: B6
+    why: "Dug into *why* the obvious approach failed — the config file runs before the content system exists — instead of copying something similar, and noted \"configuration problem or code problem?\" as a question to keep asking."
 ---
 
 ## What I did

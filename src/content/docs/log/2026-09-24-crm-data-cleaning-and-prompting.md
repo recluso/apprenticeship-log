@@ -2,9 +2,27 @@
 title: 'First steps in cleaning CRM data, and prompting AI to help'
 description: 'Profiled a real CRM export to see what messy business data actually looks like, mapped out a safe cleaning workflow, and built a reusable prompt template for each stage.'
 date: 2026-09-24
+time: 2h 30m
 tags: [data-cleaning, crm, dynamics-365, prompting, data-protection]
 cover: ../../../assets/covers/2026-09-24-crm-data-cleaning-and-prompting.svg
 coverAlt: 'A profile of a CRM export showing 339 columns of which 137 are empty and about 76 hold one value, a seven-part prompt template, and a seven-step cleaning workflow from purpose to documentation with AI proposing and a person approving.'
+ksbs:
+  - code: K2
+    why: "Data protection shaped the whole plan: the export holds real names, emails and addresses, so it must not be pasted into an AI chat, only organisation-approved tools with the right data agreement should see it, and the AI and data protection policy needs checking first."
+  - code: K4
+    why: "Planned the work as incremental change: analyse a copy of the export, agree the rules with the data owner, test fixes in a sandbox, then apply them to the live CRM in logged batches."
+  - code: K15
+    why: "Set out how people and AI share the work — AI proposes, a person approves, a controlled process applies, AI verifies — with more human control as the risk rises (from trimming spaces up to merging records)."
+  - code: S2
+    why: "Chose to share only a column profile and a small anonymised sample with AI, and to have the AI write code that runs locally, so confidential CRM data never leaves the organisation."
+  - code: S3
+    why: "Assessed how ready the data is for automation: about 60% of the 339 columns are empty or hold one value, there are over 550 duplicate groups, test records and inconsistent formats — all of which would undermine any automation built on top."
+  - code: S8
+    why: "Built a seven-part prompt template (role, context, input, task, rules, output format, check) with one prompt per cleaning stage, placeholders for reuse on other tables, and a check step that asks the AI to list its assumptions rather than guess."
+  - code: S21
+    why: "Profiled a real 8,600-record CRM export, measuring how full each column is and finding duplicates, invalid records and formatting problems, and planned the preparation steps: reduce, filter, standardise, validate and de-duplicate."
+  - code: S28
+    why: "Planned the documentation that makes the cleaning auditable: a data dictionary, a change log recording each change's record, column, old value, new value and rule, and a green/amber/red risk rating for every type of change."
 ---
 
 This is the first step in a longer piece of work: understanding what's

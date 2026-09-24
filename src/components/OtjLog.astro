@@ -1,0 +1,102 @@
+---
+// Off-the-job (OTJ) learning log: every dated entry with its time spent and
+// KSBs, oldest first, plus totals. The same data is available as a CSV at
+// /otj-log.csv for importing into a spreadsheet.
+import { getDatedEntries } from '../utils/entries';
+import { formatMinutes, toDecimalHours } from '../utils/time';
+import { KSB_CODES } from '../data/ksbs';
+import KsbBadge from './KsbBadge.astro';
+
+const entries = (await getDatedEntries()).reverse();
+const totalMinutes = entries.reduce((sum, entry) => sum + (entry.data.time ?? 0), 0);
+const missing = entries.filter((entry) => entry.data.time === undefined).length;
+const timed = entries.length - missing;
+const shortDate = (date: Date) =>
+	date.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+
+<div class="otj-summary">
+	<p class="otj-total">
+		<strong>{formatMinutes(totalMinutes)}</strong> logged ({toDecimalHours(totalMinutes)} hours) across{' '}
+		{timed} {timed === 1 ? 'entry' : 'entries'}
+	</p>
+	{missing > 0 && <p class="otj-missing">{missing} {missing === 1 ? 'entry has' : 'entries have'} no time recorded yet.</p>}
+	<p>
+		<a href="/otj-log.csv" download>Download as CSV</a> — opens in Google Sheets or Excel (File → Import).
+	</p>
+</div>
+
+<div class="otj-table-wrap">
+	<table>
+		<thead>
+			<tr>
+				<th scope="col">Date</th>
+				<th scope="col">Entry and KSBs</th>
+				<th scope="col">Time</th>
+			</tr>
+		</thead>
+		<tbody>
+			{
+				entries.map((entry) => (
+					<tr>
+						<td class="nowrap">{shortDate(entry.data.date!)}</td>
+						<td>
+							<a href={`/${entry.id}/`}>{entry.data.title}</a>
+							{entry.data.ksbs && (
+								<span class="otj-ksbs">
+									{[...entry.data.ksbs]
+										.sort((a, b) => KSB_CODES.indexOf(a.code) - KSB_CODES.indexOf(b.code))
+										.map(({ code }) => (
+											<KsbBadge code={code} href={`/${entry.id}/#ksb-${code.toLowerCase()}`} />
+										))}
+								</span>
+							)}
+						</td>
+						<td class="nowrap">
+							{entry.data.time !== undefined ? formatMinutes(entry.data.time) : <span class="muted">—</span>}
+						</td>
+					</tr>
+				))
+			}
+		</tbody>
+	</table>
+</div>
+
+<style>
+	.otj-summary {
+		padding: 1rem 1.25rem;
+		border: 1px solid var(--sl-color-hairline);
+		border-radius: 0.75rem;
+		background-color: var(--sl-color-gray-6);
+	}
+	.otj-summary p {
+		margin: 0.35rem 0 0;
+	}
+	.otj-summary .otj-total {
+		font-size: var(--sl-text-lg);
+		margin: 0;
+	}
+	.otj-missing {
+		color: var(--sl-color-orange-high);
+		font-size: var(--sl-text-sm);
+	}
+	.otj-table-wrap {
+		overflow-x: auto;
+		margin-top: 1.5rem;
+	}
+	table {
+		width: 100%;
+	}
+	.nowrap {
+		white-space: nowrap;
+	}
+	.muted {
+		color: var(--sl-color-gray-4);
+	}
+	.otj-ksbs {
+		display: flex;
+		margin-top: 0.4rem;
+		flex-wrap: wrap;
+		gap: 0.3rem;
+	}
+</style>

@@ -1,0 +1,146 @@
+---
+// Lists every KSB in the apprenticeship standard, grouped by type, with the
+// entries that evidence each one — built from entries' `ksbs` frontmatter.
+import { KSBS, KSB_CODES, KSB_STANDARD, KSB_TYPE_LABELS, type KsbCode, type KsbType } from '../data/ksbs';
+import { getDatedEntries } from '../utils/entries';
+import KsbBadge from './KsbBadge.astro';
+
+const entries = await getDatedEntries();
+const evidence = new Map<KsbCode, { title: string; href: string }[]>();
+for (const entry of entries) {
+	for (const { code } of entry.data.ksbs ?? []) {
+		const list = evidence.get(code) ?? [];
+		list.push({ title: entry.data.title, href: `/${entry.id}/#ksb-${code.toLowerCase()}` });
+		evidence.set(code, list);
+	}
+}
+
+const types = Object.keys(KSB_TYPE_LABELS) as KsbType[];
+const byType = types.map((type) => {
+	const codes = KSB_CODES.filter((code) => KSBS[code].type === type);
+	return { type, codes, covered: codes.filter((code) => evidence.has(code)).length };
+});
+const coveredTotal = byType.reduce((sum, group) => sum + group.covered, 0);
+---
+
+<div class="ksb-summary">
+	<p class="ksb-total">
+		<strong>{coveredTotal}</strong> of {KSB_CODES.length} KSBs evidenced so far
+	</p>
+	<ul>
+		{
+			byType.map(({ type, codes, covered }) => (
+				<li>
+					<a href={`#${type}`}>{KSB_TYPE_LABELS[type]}</a>: {covered} / {codes.length}
+				</li>
+			))
+		}
+	</ul>
+</div>
+
+{
+	byType.map(({ type, codes }) => (
+		<section>
+			<h2 id={type}>{KSB_TYPE_LABELS[type]}</h2>
+			<ul class="ksb-rows">
+				{codes.map((code) => {
+					const entriesForCode = evidence.get(code) ?? [];
+					return (
+						<li id={code.toLowerCase()} class:list={{ uncovered: entriesForCode.length === 0 }}>
+							<p class="ksb-row-heading">
+								<KsbBadge code={code} />
+								<strong>{KSBS[code].label}</strong>
+							</p>
+							<p class="ksb-text">{KSBS[code].text}</p>
+							{entriesForCode.length > 0 ? (
+								<p class="ksb-evidence">
+									Evidenced in:{' '}
+									{entriesForCode.map((e, i) => (
+										<>
+											{i > 0 && ' · '}
+											<a href={e.href}>{e.title}</a>
+										</>
+									))}
+								</p>
+							) : (
+								<p class="ksb-evidence">Not evidenced yet</p>
+							)}
+						</li>
+					);
+				})}
+			</ul>
+		</section>
+	))
+}
+
+<p class="ksb-source">
+	Source: <a href={KSB_STANDARD.url}>{KSB_STANDARD.reference} {KSB_STANDARD.name}, level {KSB_STANDARD.level}, version {KSB_STANDARD.version}</a>, Skills England. Contains public sector information licensed under the Open Government Licence v3.0.
+</p>
+
+<style>
+	.ksb-summary {
+		padding: 1rem 1.25rem;
+		border: 1px solid var(--sl-color-hairline);
+		border-radius: 0.75rem;
+		background-color: var(--sl-color-gray-6);
+	}
+	.ksb-total {
+		font-size: var(--sl-text-lg);
+		margin: 0;
+	}
+	.ksb-summary ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem 1.5rem;
+		list-style: none;
+		padding: 0;
+		margin: 0.5rem 0 0;
+	}
+	.ksb-summary li {
+		margin: 0;
+	}
+	.ksb-rows {
+		list-style: none;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+	.ksb-rows li {
+		margin: 0;
+		scroll-margin-top: calc(var(--sl-nav-height) + 1.5rem);
+	}
+	.ksb-rows li:target {
+		outline: 2px solid var(--sl-color-accent);
+		outline-offset: 0.5rem;
+		border-radius: 0.25rem;
+	}
+	.ksb-row-heading {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		margin: 0;
+	}
+	.ksb-text {
+		margin: 0.35rem 0 0;
+		font-size: var(--sl-text-sm);
+		color: var(--sl-color-gray-2);
+	}
+	.ksb-evidence {
+		margin: 0.35rem 0 0;
+		font-size: var(--sl-text-sm);
+	}
+	.uncovered .ksb-evidence {
+		color: var(--sl-color-gray-4);
+		font-style: italic;
+	}
+	.uncovered .ksb-row-heading,
+	.uncovered .ksb-text {
+		opacity: 0.7;
+	}
+	.ksb-source {
+		margin-top: 3rem;
+		font-size: var(--sl-text-xs);
+		color: var(--sl-color-gray-3);
+	}
+</style>

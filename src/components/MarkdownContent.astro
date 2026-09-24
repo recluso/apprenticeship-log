@@ -1,0 +1,11 @@
+---
+// Overrides Starlight's MarkdownContent to append the apprenticeship KSB
+// section after an entry's own content (only on entries with `ksbs`).
+import Default from '@astrojs/starlight/components/MarkdownContent.astro';
+import KsbSection from './KsbSection.astro';
+---
+
+<Default {...Astro.props}>
+	<slot />
+	<KsbSection />
+</Default>

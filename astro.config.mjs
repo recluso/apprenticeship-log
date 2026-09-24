@@ -13,13 +13,25 @@ export default defineConfig({
 				'Learning log, projects, and reflections from a UK AI & Automation Level 4 apprenticeship.',
 			components: {
 				Hero: './src/components/Hero.astro',
+				MarkdownContent: './src/components/MarkdownContent.astro',
 				PageTitle: './src/components/PageTitle.astro',
 				ThemeProvider: './src/components/ThemeProvider.astro',
 			},
 			sidebar: [
 				{
 					label: 'Learning Log',
-					items: [{ label: 'Overview', slug: 'log' }, ...buildLogSidebarGroups()],
+					items: [
+						{ label: 'Overview', slug: 'log' },
+						{ label: 'Log template', slug: 'log-template' },
+						...buildLogSidebarGroups(),
+					],
+				},
+				{
+					label: 'Apprenticeship',
+					items: [
+						{ label: 'KSB tracker', slug: 'ksbs' },
+						{ label: 'Off-the-job log', slug: 'otj-log' },
+					],
 				},
 				{
 					label: 'Projects',

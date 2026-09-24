@@ -2,9 +2,25 @@
 title: 'Designing a prompt template, then using it to build this site'
 description: 'How I structured an effective Claude prompt, then used it to scaffold, build, and deploy this site end-to-end.'
 date: 2026-09-22
+time: 2h 30m
 tags: [prompting, automation, tooling, cloudflare, ci-cd]
 cover: ../../../assets/covers/2026-09-22-prompt-template-and-deploying-this-site.svg
 coverAlt: 'A prompt template with Task, Context, Decision, Deploy and Constraints sections, handed off to a browser showing this site, deployed via a git push, build and live pipeline on Cloudflare Workers.'
+ksbs:
+  - code: S1
+    why: "When I pasted my Cloudflare API token into the secret's name field instead of its value, I treated it as an exposed credential: revoked it and issued a new one straight away, rather than assuming it was safe because it was my own repo."
+  - code: S7
+    why: "Configured a cloud platform (Cloudflare Workers static assets, via `wrangler.jsonc`) and a workflow automation platform (GitHub Actions) to host and publish the site without any server code."
+  - code: S8
+    why: "Designed a reusable prompt template (Task, Context, Technical decision, Site structure, Deployment requirements, Process, Constraints), filled it with real specifics and refined it before handing it to Claude Code — and saw that the structure turned a large multi-step project into one clear handoff."
+  - code: S11
+    why: "Connected GitHub, GitHub Actions and Cloudflare so every push builds and redeploys the site automatically, authenticating `gh` and `wrangler` and passing credentials as repository secrets; tested on a `workers.dev` URL before attaching the custom domain."
+  - code: S25
+    why: "Evaluated a newly released Cloudflare product (the emDash CMS on D1 and R2) against a plain Astro + Starlight static site, and chose the static option because it needs no database to maintain and makes each entry a git-tracked habit."
+  - code: K8
+    why: "Weighed a database-backed CMS on Cloudflare's services against static files on Workers, and learned what the platform takes care of (SSL and routing for a custom domain) versus what I'd have to manage myself."
+  - code: B6
+    why: "Let an AI assistant build and deploy the site, but kept it safe: tried everything on a throwaway URL first, and reflected that \"the assistant can handle it\" doesn't remove the need to understand what a credential-related command is doing."
 ---
 
 ## What I did

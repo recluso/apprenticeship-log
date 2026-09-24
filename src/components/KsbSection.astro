@@ -1,0 +1,95 @@
+---
+// Appended to the end of any entry with `ksbs` frontmatter: one item per
+// KSB with its badge, short label, why it applies to this entry, and the
+// official wording from the standard. Renders nothing on other pages.
+import { KSBS, KSB_CODES, KSB_STANDARD } from '../data/ksbs';
+import KsbBadge from './KsbBadge.astro';
+
+// Explanations are plain text with optional `code` and *emphasis* marks.
+const inline = (text: string) =>
+	text
+		.replaceAll('&', '&amp;')
+		.replaceAll('<', '&lt;')
+		.replaceAll('>', '&gt;')
+		.replace(/`([^`]+)`/g, '<code>$1</code>')
+		.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+
+const ksbs = [...(Astro.locals.starlightRoute.entry.data.ksbs ?? [])].sort(
+	(a, b) => KSB_CODES.indexOf(a.code) - KSB_CODES.indexOf(b.code)
+);
+---
+
+{
+	ksbs.length > 0 && (
+		<section class="ksb-section" aria-labelledby="apprenticeship-ksbs">
+			<h2 id="apprenticeship-ksbs">Apprenticeship KSBs</h2>
+			<p class="ksb-intro">
+				How this entry evidences the {KSB_STANDARD.reference} {KSB_STANDARD.name} standard. See the{' '}
+				<a href="/ksbs/">KSB tracker</a> for coverage across all entries.
+			</p>
+			<ul class="ksb-list">
+				{ksbs.map(({ code, why }) => (
+					<li id={`ksb-${code.toLowerCase()}`}>
+						<p class="ksb-heading">
+							<KsbBadge code={code} href={`/ksbs/#${code.toLowerCase()}`} />
+							<strong>{KSBS[code].label}</strong>
+						</p>
+						<p class="ksb-why" set:html={inline(why)} />
+						<details>
+							<summary>Official wording</summary>
+							<p>{KSBS[code].text}</p>
+						</details>
+					</li>
+				))}
+			</ul>
+		</section>
+	)
+}
+
+<style>
+	.ksb-section {
+		margin-top: 3rem;
+		padding-top: 1.5rem;
+		border-top: 1px solid var(--sl-color-hairline);
+	}
+	.ksb-intro {
+		color: var(--sl-color-gray-3);
+		font-size: var(--sl-text-sm);
+	}
+	.ksb-list {
+		list-style: none;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+	.ksb-list li {
+		margin: 0;
+		scroll-margin-top: calc(var(--sl-nav-height) + 1.5rem);
+	}
+	.ksb-list li:target {
+		outline: 2px solid var(--sl-color-accent);
+		outline-offset: 0.5rem;
+		border-radius: 0.25rem;
+	}
+	.ksb-heading {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		margin: 0;
+	}
+	.ksb-why {
+		margin: 0.4rem 0 0;
+	}
+	details {
+		margin-top: 0.35rem;
+		font-size: var(--sl-text-sm);
+		color: var(--sl-color-gray-3);
+	}
+	summary {
+		cursor: pointer;
+	}
+	details p {
+		margin: 0.35rem 0 0;
+	}
+</style>

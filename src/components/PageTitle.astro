@@ -1,29 +1,55 @@
 ---
-// Overrides Starlight's default PageTitle to show a small date badge above
-// the heading, for any doc entry with a `date` frontmatter field (log
-// entries, projects), and the entry's `cover` graphic (if any) below it.
-// Pages without a date or cover (resources, glossary...) render unchanged.
+// Overrides Starlight's default PageTitle for log entries and projects:
+// - a small date badge (and time spent, if `time` is set) above the heading
+// - the entry's apprenticeship KSB badges below it, linking to the
+//   explanations at the end of the page (see KsbSection.astro)
+// - the entry's `cover` graphic (if any)
+// Pages without these fields (resources, glossary...) render unchanged.
 import { Image } from 'astro:assets';
 import Default from '@astrojs/starlight/components/PageTitle.astro';
+import KsbBadge from './KsbBadge.astro';
+import { KSB_CODES, type KsbCode } from '../data/ksbs';
+import { formatDate } from '../utils/entries';
+import { formatMinutes } from '../utils/time';
 
 const { entry } = Astro.locals.starlightRoute;
-const { date, cover, coverAlt } = entry.data as {
+const { date, time, ksbs, cover, coverAlt } = entry.data as {
 	date?: Date;
+	time?: number;
+	ksbs?: { code: KsbCode }[];
 	cover?: ImageMetadata;
 	coverAlt?: string;
 };
+const codes = (ksbs ?? [])
+	.map(({ code }) => code)
+	.sort((a, b) => KSB_CODES.indexOf(a) - KSB_CODES.indexOf(b));
 ---
 
 {
-	date && (
-		<p class="entry-date-badge">
-			{date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: '2-digit' })}
-		</p>
+	(date || time !== undefined) && (
+		<div class="entry-meta">
+			{date && <p class="entry-date-badge">{formatDate(date)}</p>}
+			{time !== undefined && (
+				<p class="entry-date-badge" title="Time spent (off-the-job learning)">
+					<span aria-hidden="true">⏱</span> {formatMinutes(time)}
+				</p>
+			)}
+		</div>
 	)
 }
 <Default {...Astro.props}>
 	<slot />
 </Default>
+{
+	codes.length > 0 && (
+		<p class="entry-ksbs">
+			<a href="#apprenticeship-ksbs" class="entry-ksbs-label">KSBs</a>
+			{codes.map((code) => (
+				<KsbBadge code={code} href={`#ksb-${code.toLowerCase()}`} />
+			))}
+		</p>
+	)
+}
 {
 	cover && (
 		<div class="entry-cover">
@@ -39,6 +65,12 @@ const { date, cover, coverAlt } = entry.data as {
 }
 
 <style>
+	.entry-meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin: 0 0 0.75rem;
+	}
 	.entry-date-badge {
 		display: inline-block;
 		font-size: var(--sl-text-xs);
@@ -47,7 +79,23 @@ const { date, cover, coverAlt } = entry.data as {
 		border: 1px solid var(--sl-color-gray-5);
 		border-radius: 999px;
 		padding: 0.2rem 0.75rem;
-		margin: 0 0 0.75rem;
+		margin: 0;
+	}
+	.entry-ksbs {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.4rem;
+		margin: 1rem 0 0;
+	}
+	.entry-ksbs-label {
+		font-size: var(--sl-text-xs);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		color: var(--sl-color-gray-3);
+		text-decoration: none;
+		margin-right: 0.2rem;
 	}
 	.entry-cover {
 		width: min(100%, 30rem);

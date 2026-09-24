@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1b1e2b"/>
+      <stop offset="1" stop-color="#11131b"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.3" cy="0.3" r="0.55">
+      <stop offset="0" stop-color="#8b95ff" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#8b95ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="560" height="420" rx="24" fill="url(#bg)"/>
+  <rect width="560" height="420" rx="24" fill="url(#glow)"/>
+
+  <!-- Mock entry page -->
+  <g transform="translate(36 36)">
+    <rect width="258" height="348" rx="12" fill="#232838" stroke="#3a4160"/>
+    <!-- date + time badges -->
+    <rect x="18" y="18" width="82" height="16" rx="8" fill="#2b3145" stroke="#4a5270"/>
+    <rect x="106" y="18" width="48" height="16" rx="8" fill="#2b3145" stroke="#4a5270"/>
+    <!-- title -->
+    <rect x="18" y="48" width="206" height="13" rx="4" fill="#e4e7f1"/>
+    <rect x="18" y="67" width="148" height="13" rx="4" fill="#e4e7f1"/>
+    <!-- KSB badges -->
+    <rect x="18" y="92" width="26" height="14" rx="4" fill="#8b95ff" fill-opacity="0.3" stroke="#8b95ff"/>
+    <rect x="50" y="92" width="26" height="14" rx="4" fill="#6fe3c8" fill-opacity="0.3" stroke="#6fe3c8"/>
+    <rect x="82" y="92" width="26" height="14" rx="4" fill="#f5b85a" fill-opacity="0.3" stroke="#f5b85a"/>
+    <!-- cover -->
+    <rect x="18" y="118" width="222" height="92" rx="8" fill="#2b3145"/>
+    <circle cx="68" cy="164" r="18" fill="#8b95ff" fill-opacity="0.5"/>
+    <rect x="100" y="148" width="112" height="8" rx="4" fill="#4a5270"/>
+    <rect x="100" y="164" width="84" height="8" rx="4" fill="#4a5270"/>
+    <!-- sections -->
+    <rect x="18" y="226" width="92" height="9" rx="4" fill="#c9cdd8"/>
+    <rect x="18" y="242" width="216" height="5" rx="2.5" fill="#4a5270"/>
+    <rect x="18" y="252" width="190" height="5" rx="2.5" fill="#4a5270"/>
+    <rect x="18" y="268" width="104" height="9" rx="4" fill="#c9cdd8"/>
+    <rect x="18" y="284" width="206" height="5" rx="2.5" fill="#4a5270"/>
+    <!-- KSB explanations -->
+    <line x1="18" y1="302" x2="240" y2="302" stroke="#3a4160"/>
+    <rect x="18" y="312" width="22" height="11" rx="3" fill="#6fe3c8" fill-opacity="0.3" stroke="#6fe3c8"/>
+    <rect x="46" y="314" width="180" height="6" rx="3" fill="#4a5270"/>
+    <rect x="18" y="330" width="22" height="11" rx="3" fill="#f5b85a" fill-opacity="0.3" stroke="#f5b85a"/>
+    <rect x="46" y="332" width="150" height="6" rx="3" fill="#4a5270"/>
+  </g>
+
+  <!-- Labels: which frontmatter field drives each part -->
+  <g stroke="#8b95ff" stroke-opacity="0.6" stroke-width="1.5" stroke-dasharray="2 4">
+    <line x1="196" y1="62" x2="316" y2="62"/>
+    <line x1="266" y1="110" x2="316" y2="110"/>
+    <line x1="150" y1="135" x2="316" y2="135"/>
+    <line x1="282" y1="200" x2="316" y2="200"/>
+    <line x1="146" y1="266" x2="316" y2="266"/>
+    <line x1="268" y1="358" x2="316" y2="358"/>
+  </g>
+  <g font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="13" fill="#8b93ad">
+    <text x="324" y="66"><tspan fill="#8b95ff">date</tspan> · <tspan fill="#8b95ff">time</tspan></text>
+    <text x="324" y="114"><tspan fill="#8b95ff">title</tspan></text>
+    <text x="324" y="139"><tspan fill="#8b95ff">ksbs</tspan> → badges</text>
+    <text x="324" y="204"><tspan fill="#8b95ff">cover</tspan></text>
+    <text x="324" y="270"><tspan fill="#e4e7f1">## What I did…</tspan></text>
+    <text x="324" y="362"><tspan fill="#8b95ff">ksbs</tspan> → why</text>
+  </g>
+</svg>

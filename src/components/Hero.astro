@@ -5,18 +5,13 @@
 // in the home page's `hero` frontmatter still render after "Read it".
 // If the entry has a `cover` image in its frontmatter, it's shown on the
 // right (above the text on narrow screens).
-import { getCollection } from 'astro:content';
+import { getDatedEntries, formatDate } from '../utils/entries';
 import { Image } from 'astro:assets';
 import { LinkButton } from '@astrojs/starlight/components';
 
 const { actions = [] } = Astro.locals.starlightRoute.entry.data.hero || {};
 
-const [latest] = (await getCollection('docs'))
-	.filter(
-		(entry) =>
-			/^(log|projects)\//.test(entry.id) && !entry.id.endsWith('/index') && entry.data.date
-	)
-	.sort((a, b) => b.data.date!.getTime() - a.data.date!.getTime());
+const [latest] = await getDatedEntries();
 ---
 
 <div class:list={['hero', { 'has-cover': latest?.data.cover }]}>
@@ -38,11 +33,7 @@ const [latest] = (await getCollection('docs'))
 				<div class="sl-flex copy">
 					<p class="eyebrow">
 						Latest {latest.id.startsWith('projects/') ? 'project' : 'entry'} ·{' '}
-						{latest.data.date!.toLocaleDateString('en-GB', {
-							year: 'numeric',
-							month: 'long',
-							day: '2-digit',
-						})}
+						{formatDate(latest.data.date!)}
 					</p>
 					{/* "_top" is Starlight's PAGE_TITLE_ID, used by the skip link. */}
 					<h1 id="_top" data-page-title>

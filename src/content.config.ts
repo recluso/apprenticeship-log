@@ -1,6 +1,8 @@
 import { defineCollection, z } from 'astro:content';
 import { docsLoader } from '@astrojs/starlight/loaders';
 import { docsSchema } from '@astrojs/starlight/schema';
+import { KSB_CODES } from './data/ksbs';
+import { parseTime } from './utils/time';
 
 export const collections = {
 	docs: defineCollection({
@@ -21,6 +23,27 @@ export const collections = {
 					// Describe what the cover shows, for screen-reader users.
 					// Leave empty ('') if the image is purely decorative.
 					coverAlt: z.string().optional(),
+					// Time spent on this chunk of learning, for off-the-job (OTJ)
+					// logs, written like `2h 30m`, `45m` or `3h`. Stored as minutes.
+					time: z
+						.string()
+						.transform((value, ctx) => {
+							const minutes = parseTime(value);
+							if (minutes === undefined) {
+								ctx.addIssue({
+									code: z.ZodIssueCode.custom,
+									message: `time must look like "2h 30m", "45m" or "3h" (got "${value}")`,
+								});
+								return z.NEVER;
+							}
+							return minutes;
+						})
+						.optional(),
+					// Apprenticeship standard KSBs this entry evidences, each with
+					// an explanation of why. Codes must exist in src/data/ksbs.ts.
+					ksbs: z
+						.array(z.object({ code: z.enum(KSB_CODES), why: z.string().min(1) }))
+						.optional(),
 				}),
 		}),
 	}),

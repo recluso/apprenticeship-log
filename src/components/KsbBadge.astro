@@ -1,0 +1,53 @@
+---
+// A small coloured tag for one apprenticeship KSB code, e.g. "K2". Colour
+// shows the type: blue = knowledge, green = skill, orange = behaviour. The
+// short label is available on hover and to screen readers.
+import { KSBS, type KsbCode } from '../data/ksbs';
+
+interface Props {
+	code: KsbCode;
+	href?: string;
+}
+
+const { code, href } = Astro.props;
+const { type, label } = KSBS[code];
+const Tag = href ? 'a' : 'span';
+---
+
+<Tag class:list={['ksb-badge', `ksb-${type}`]} href={href} title={`${code}: ${label}`} aria-label={`${code}: ${label}`}>
+	{code}
+</Tag>
+
+<style>
+	.ksb-badge {
+		display: inline-block;
+		min-width: 2.6em;
+		text-align: center;
+		font-size: var(--sl-text-xs);
+		font-weight: 600;
+		line-height: 1.6;
+		padding: 0.05rem 0.5rem;
+		border-radius: 0.4rem;
+		border: 1px solid;
+		text-decoration: none;
+		font-variant-numeric: tabular-nums;
+	}
+	.ksb-knowledge {
+		color: var(--sl-color-blue-high);
+		background-color: var(--sl-color-blue-low);
+		border-color: var(--sl-color-blue);
+	}
+	.ksb-skill {
+		color: var(--sl-color-green-high);
+		background-color: var(--sl-color-green-low);
+		border-color: var(--sl-color-green);
+	}
+	.ksb-behaviour {
+		color: var(--sl-color-orange-high);
+		background-color: var(--sl-color-orange-low);
+		border-color: var(--sl-color-orange);
+	}
+	a.ksb-badge:hover {
+		filter: brightness(1.15);
+	}
+</style>
