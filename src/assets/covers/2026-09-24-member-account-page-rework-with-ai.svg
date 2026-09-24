@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1b1e2b"/>
+      <stop offset="1" stop-color="#11131b"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.72" cy="0.28" r="0.5">
+      <stop offset="0" stop-color="#8b95ff" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#8b95ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="560" height="420" rx="24" fill="url(#bg)"/>
+  <rect width="560" height="420" rx="24" fill="url(#glow)"/>
+
+  <!-- Prompt drafts: three versions, each closing questions -->
+  <g transform="translate(28 30)">
+    <text x="0" y="12" fill="#8b93ad" font-size="12" font-weight="600" letter-spacing="1">PROMPT</text>
+    <g transform="translate(0 24)">
+      <rect width="150" height="58" rx="10" fill="#232838" stroke="#3a4160"/>
+      <text x="12" y="22" fill="#e4e7f1" font-size="13" font-weight="600">Draft 1</text>
+      <text x="12" y="42" fill="#f5b85a" font-size="12">? move or copy</text>
+      <text x="138" y="22" fill="#f5b85a" font-size="12" text-anchor="end">5 open</text>
+    </g>
+    <g transform="translate(0 92)">
+      <rect width="150" height="58" rx="10" fill="#232838" stroke="#3a4160"/>
+      <text x="12" y="22" fill="#e4e7f1" font-size="13" font-weight="600">Draft 2</text>
+      <text x="12" y="42" fill="#f5b85a" font-size="12">? where do docs go</text>
+      <text x="138" y="22" fill="#f5b85a" font-size="12" text-anchor="end">3 open</text>
+    </g>
+    <g transform="translate(0 160)">
+      <rect width="150" height="58" rx="10" fill="#232838" stroke="#6fe3c8" stroke-opacity="0.7"/>
+      <text x="12" y="22" fill="#e4e7f1" font-size="13" font-weight="600">Draft 3</text>
+      <text x="12" y="42" fill="#6fe3c8" font-size="12">✓ ready to build</text>
+      <text x="138" y="22" fill="#6fe3c8" font-size="12" text-anchor="end">0 open</text>
+    </g>
+    <path d="M75 82 v10 M75 150 v10" stroke="#8b95ff" stroke-width="2"/>
+  </g>
+
+  <!-- Arrow into the page -->
+  <path d="M190 146 h26" stroke="#8b95ff" stroke-width="2.5"/>
+  <path d="M216 140 l8 6 l-8 6 z" fill="#8b95ff"/>
+
+  <!-- Desktop: memberships table -->
+  <g transform="translate(236 30)">
+    <text x="0" y="12" fill="#8b93ad" font-size="12" font-weight="600" letter-spacing="1">DESKTOP</text>
+    <g transform="translate(0 24)">
+      <rect width="190" height="118" rx="10" fill="#232838" stroke="#3a4160"/>
+      <rect x="10" y="12" width="84" height="12" rx="3" fill="#3a4160"/>
+      <rect x="10" y="32" width="170" height="16" rx="3" fill="#35486a"/>
+      <g font-size="9" fill="#e4e7f1">
+        <text x="16" y="43">Type</text><text x="62" y="43">No.</text><text x="98" y="43">Start</text><text x="140" y="43">Action</text>
+      </g>
+      <g font-size="10" fill="#c9cdd8">
+        <text x="16" y="66" font-weight="600">Individual</text><text x="98" y="66">7 Jun</text>
+        <rect x="138" y="56" width="42" height="13" rx="3" fill="#c7cdd6"/>
+        <line x1="10" y1="76" x2="180" y2="76" stroke="#3a4160"/>
+        <text x="16" y="92" font-weight="600">Group</text><text x="98" y="92">23 May</text>
+        <text x="16" y="105" fill="#8b93ad" font-size="9">Wheelers CC</text>
+        <rect x="138" y="82" width="42" height="13" rx="3" fill="#c7cdd6"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Phone: the same memberships as cards -->
+  <g transform="translate(448 30)">
+    <text x="0" y="12" fill="#8b93ad" font-size="12" font-weight="600" letter-spacing="1">PHONE</text>
+    <g transform="translate(0 24)">
+      <rect width="84" height="200" rx="14" fill="#11131b" stroke="#3a4160" stroke-width="2"/>
+      <rect x="32" y="8" width="20" height="4" rx="2" fill="#3a4160"/>
+      <g transform="translate(8 22)">
+        <rect width="68" height="80" rx="6" fill="#232838" stroke="#3a4160"/>
+        <text x="7" y="15" fill="#e4e7f1" font-size="9" font-weight="600">Individual</text>
+        <line x1="7" y1="21" x2="61" y2="21" stroke="#3a4160"/>
+        <rect x="7" y="28" width="24" height="5" rx="2" fill="#8b93ad"/><rect x="41" y="28" width="20" height="5" rx="2" fill="#c9cdd8"/>
+        <rect x="7" y="39" width="24" height="5" rx="2" fill="#8b93ad"/><rect x="41" y="39" width="20" height="5" rx="2" fill="#c9cdd8"/>
+        <rect x="7" y="50" width="24" height="5" rx="2" fill="#8b93ad"/><rect x="41" y="50" width="20" height="5" rx="2" fill="#c9cdd8"/>
+        <rect x="7" y="62" width="54" height="11" rx="3" fill="#c7cdd6"/>
+      </g>
+      <g transform="translate(8 110)">
+        <rect width="68" height="80" rx="6" fill="#232838" stroke="#3a4160"/>
+        <text x="7" y="15" fill="#e4e7f1" font-size="9" font-weight="600">Group</text>
+        <text x="7" y="26" fill="#8b93ad" font-size="7.5">Wheelers CC</text>
+        <line x1="7" y1="31" x2="61" y2="31" stroke="#3a4160"/>
+        <rect x="7" y="37" width="24" height="5" rx="2" fill="#8b93ad"/><rect x="41" y="37" width="20" height="5" rx="2" fill="#c9cdd8"/>
+        <rect x="7" y="48" width="24" height="5" rx="2" fill="#8b93ad"/><rect x="41" y="48" width="20" height="5" rx="2" fill="#c9cdd8"/>
+        <rect x="7" y="62" width="54" height="11" rx="3" fill="#c7cdd6"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Code note: how the cards work -->
+  <g transform="translate(236 176)">
+    <rect width="190" height="46" rx="10" fill="#232838" stroke="#3a4160"/>
+    <g font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="11">
+      <text x="12" y="19" fill="#c7a2ff">td<tspan fill="#8b93ad">[</tspan>data-label<tspan fill="#8b93ad">]</tspan>::before</text>
+      <text x="12" y="36" fill="#8b93ad">content: <tspan fill="#6fe3c8">attr(data-label)</tspan></text>
+    </g>
+  </g>
+
+  <!-- Tests that passed -->
+  <g transform="translate(28 282)">
+    <rect width="504" height="108" rx="12" fill="#232838" stroke="#8b95ff" stroke-opacity="0.55"/>
+    <text x="18" y="28" fill="#e4e7f1" font-size="15" font-weight="600">Verified before commit</text>
+    <text x="486" y="28" fill="#8b93ad" font-size="12" text-anchor="end">0 lines of agency code changed</text>
+    <g font-size="12" fill="#c9cdd8">
+      <text x="18" y="56"><tspan fill="#6fe3c8">✓</tspan> 3 member types + staff view</text>
+      <text x="18" y="78"><tspan fill="#6fe3c8">✓</tspan> anonymous + other member → 403</text>
+      <text x="18" y="100"><tspan fill="#6fe3c8">✓</tspan> replayed form token rejected</text>
+      <text x="262" y="56"><tspan fill="#6fe3c8">✓</tspan> &lt;script&gt; in a name shown as text</text>
+      <text x="262" y="78"><tspan fill="#6fe3c8">✓</tspan> hidden sections switch back on</text>
+      <text x="262" y="100"><tspan fill="#6fe3c8">✓</tspan> 390px · 768px · 1300px</text>
+    </g>
+  </g>
+</svg>
