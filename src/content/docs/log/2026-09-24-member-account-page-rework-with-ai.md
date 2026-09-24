@@ -1,7 +1,7 @@
 ---
 title: 'Prompting an AI coding agent through a real Drupal rework'
 description: 'Refined a structured prompt with Claude Code over three drafts, then used it to rework the member account page on our Drupal site: tested, reversible, kept apart from an agency’s code, and responsive on phones.'
-date: 2026-09-24
+date: 2026-09-24T14:00
 time: 2h 20m
 gdoc: https://docs.google.com/document/d/1bmzdW_t_PiI0vxX3XpVARMN-8ttjPbNFwnvshWepF68/edit
 tags: [prompting, claude-code, drupal, testing, accessibility, responsive-design]

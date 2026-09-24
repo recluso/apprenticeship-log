@@ -7,23 +7,24 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import matter from 'gray-matter';
+import { toEntryDate } from './entryDate.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const LOG_DIR = path.join(__dirname, '../content/docs/log');
 
+// Both work in UTC, like every other date on the site, so an entry's time
+// never moves it into another week (see entryDate.mjs).
 function startOfWeekMonday(date) {
-	const d = new Date(date);
-	const day = d.getDay();
-	const diff = (day === 0 ? -6 : 1) - day;
-	d.setDate(d.getDate() + diff);
-	d.setHours(0, 0, 0, 0);
+	const d = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
+	const day = d.getUTCDay();
+	d.setUTCDate(d.getUTCDate() + ((day === 0 ? -6 : 1) - day));
 	return d;
 }
 
 function formatUKShortDate(date) {
-	const dd = String(date.getDate()).padStart(2, '0');
-	const mm = String(date.getMonth() + 1).padStart(2, '0');
-	const yy = String(date.getFullYear()).slice(-2);
+	const dd = String(date.getUTCDate()).padStart(2, '0');
+	const mm = String(date.getUTCMonth() + 1).padStart(2, '0');
+	const yy = String(date.getUTCFullYear()).slice(-2);
 	return `${dd}/${mm}/${yy}`;
 }
 
@@ -36,9 +37,15 @@ export function buildLogSidebarGroups() {
 		const raw = readFileSync(path.join(LOG_DIR, filename), 'utf-8');
 		const { data } = matter(raw);
 		const slug = filename.replace(/\.mdx?$/, '');
+		const date = toEntryDate(data.date);
+		if (Number.isNaN(date.getTime())) {
+			throw new Error(
+				`${filename}: date must look like 2026-09-24 or 2026-09-24T14:00 (got "${data.date}")`,
+			);
+		}
 		return {
 			title: data.title ?? slug,
-			date: new Date(data.date),
+			date,
 			slug: `log/${slug}`,
 		};
 	});

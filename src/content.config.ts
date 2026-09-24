@@ -3,6 +3,7 @@ import { docsLoader } from '@astrojs/starlight/loaders';
 import { docsSchema } from '@astrojs/starlight/schema';
 import { KSB_CODES } from './data/ksbs';
 import { parseTime } from './utils/time';
+import { toEntryDate } from './utils/entryDate.mjs';
 
 export const collections = {
 	docs: defineCollection({
@@ -12,8 +13,15 @@ export const collections = {
 				z.object({
 					// Used by learning-log and project entries for chronological
 					// sorting and topic filtering. Optional so plain docs pages
-					// (about, resources, glossary...) don't need them.
-					date: z.coerce.date().optional(),
+					// (about, resources, glossary...) don't need them. A time
+					// (`2026-09-24T14:00`) orders same-day entries; see
+					// src/utils/entryDate.mjs.
+					date: z
+						.preprocess(
+							(value) => (value === undefined ? undefined : toEntryDate(value)),
+							z.date({ invalid_type_error: 'date must look like 2026-09-24 or 2026-09-24T14:00' }),
+						)
+						.optional(),
 					tags: z.array(z.string()).optional(),
 					// Optional cover graphic shown beside the entry when it's
 					// featured on the home page. A path relative to the Markdown

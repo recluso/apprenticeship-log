@@ -21,7 +21,7 @@ const weekLabel = (monday: string) =>
 		timeZone: 'UTC',
 	});
 const shortDate = (date: Date) =>
-	date.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' });
+	date.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
 ---
 
 <div class="otj-summary">

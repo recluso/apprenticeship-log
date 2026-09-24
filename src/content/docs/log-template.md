@@ -69,7 +69,7 @@ Each part of an entry comes from one field or section in its Markdown file:
 
 | On the page | Comes from | Notes |
 | --- | --- | --- |
-| Date badge | `date` | Also sets the entry's "Week commencing" group in the sidebar. |
+| Date badge | `date` | Also sets the entry's "Week commencing" group in the sidebar. For a second entry on the same day, add a time (`2026-09-29T14:00`) so it counts as the newer one; the time isn't shown. |
 | Time badge | `time` | Written as `2h 30m`, `45m` or `3h`. Totalled on the [off-the-job log](/otj-log/). The default is `2h 30m`. |
 | — (OTJ CSVs only) | `activityType` | The evidence sheet's *Type of Learning Activity*, e.g. `TCG Session`, `TCG Set Tasks`, `Coaching / Mentoring`. Leave it out for the default, `Portfolio Work (non-admin)`. |
 | Title | `title` | Describe the topic only; the date is shown separately. |

@@ -37,6 +37,14 @@ and deployed as static assets on [Cloudflare Workers](https://developers.cloudfl
    entry at the top of the home page. It also appears automatically at the
    top of `/log/` (sorted newest-first by `date`), grouped into a "Week commencing DD/MM/YY"
    section in the sidebar (Monday-starting) — no other file needs editing.
+
+   **Two entries on the same day?** Add a time to the later one's `date`,
+   e.g. `date: 2026-09-24T14:00`. Without one, same-day entries tie and the
+   one whose file name sorts first is treated as newest. The time only sets
+   the order: it isn't shown anywhere, and the date shown is always the day
+   written. (Times are read as UTC and every date is displayed in UTC, so
+   the day can't shift whatever time zone the site is built in; see
+   `src/utils/entryDate.mjs`.)
 4. Run `npm run dev` to preview locally before publishing.
 
 ## Time spent and KSBs

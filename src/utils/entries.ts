@@ -14,5 +14,11 @@ export async function getDatedEntries() {
 }
 
 export function formatDate(date: Date): string {
-	return date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: '2-digit' });
+	// UTC, so an entry's time never moves it on to another day (see entryDate.mjs).
+	return date.toLocaleDateString('en-GB', {
+		year: 'numeric',
+		month: 'long',
+		day: '2-digit',
+		timeZone: 'UTC',
+	});
 }

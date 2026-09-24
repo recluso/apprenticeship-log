@@ -12,6 +12,7 @@ import { ELEMENT_NODE, TEXT_NODE, parse, renderSync, walkSync } from 'ultrahtml'
 import { querySelector } from 'ultrahtml/selector';
 import { KSBS, KSB_CODES, KSB_STANDARD } from '../src/data/ksbs.ts';
 import { parseTime, formatMinutes, toDecimalHours } from '../src/utils/time.ts';
+import { toEntryDate } from '../src/utils/entryDate.mjs';
 
 const SITE = 'https://testdept.co.uk';
 
@@ -86,10 +87,11 @@ const body = content.children.map((child) => renderSync(child)).join('');
 
 // --- Header and KSB section, from frontmatter ------------------------------
 const url = `${SITE}/${slug}/`;
-const date = new Date(data.date).toLocaleDateString('en-GB', {
+const date = toEntryDate(data.date).toLocaleDateString('en-GB', {
 	day: 'numeric',
 	month: 'long',
 	year: 'numeric',
+	timeZone: 'UTC',
 });
 const minutes = data.time ? parseTime(String(data.time)) : undefined;
 const ksbs = [...(data.ksbs ?? [])].sort(
