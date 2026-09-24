@@ -39,6 +39,13 @@ export const collections = {
 							return minutes;
 						})
 						.optional(),
+					// "Type of Learning Activity" for the OTJ evidence sheet, e.g.
+					// "TCG Session", "TCG Set Tasks", "Coaching / Mentoring".
+					// Defaults to "Portfolio Work (non-admin)" (see src/utils/otj.ts).
+					activityType: z.string().optional(),
+					// Link to the Google Doc copy of this entry in the owner's Drive
+					// ("Learning log entries" folder). For reference only; not shown.
+					gdoc: z.string().url().optional(),
 					// Apprenticeship standard KSBs this entry evidences, each with
 					// an explanation of why. Codes must exist in src/data/ksbs.ts.
 					ksbs: z

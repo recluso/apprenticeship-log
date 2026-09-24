@@ -39,7 +39,30 @@ Starlight, deployed as static assets on Cloudflare Workers.
   the owner's off-the-job log. Default to `time: 2h 30m` on every new entry
   (the owner's choice) unless they give a different time, and mention the
   default when adding it so they can correct it. Totals and a CSV export
-  are on `/otj-log/` and `/otj-log.csv`.
+  are on `/otj-log/` and `/otj-log.csv`; per-week CSVs at
+  `/otj-log/week-YYYY-MM-DD.csv` (the Monday). All use the columns of the
+  provider's *Off the job – weekly evidence* sheet (`src/utils/otj.ts`).
+  `activityType` fills its *Type of Learning Activity* column (default
+  `Portfolio Work (non-admin)`; others seen: `TCG Session`, `TCG Set
+  Tasks`, `Coaching / Mentoring`) — ask if unsure. `APPRENTICE_NAME` in
+  `otj.ts` fills the form's name row (the owner chose to include it, knowing
+  the CSVs are public).
+- **Google Doc copies (routine):** every new log entry also gets a Google
+  Doc copy in the owner's Drive, created in the same session via the Google
+  Drive connector:
+  1. `npm run build`, then `node scripts/entry-to-gdoc.mjs log/<entry-file-name>`
+     to produce the doc HTML (header with date, time, KSBs and web link;
+     the entry's content; then each KSB with its "why" and official wording).
+  2. Create it with the Drive `create_file` tool: `contentMimeType:
+     text/html` (converted to a Google Doc), title `YYYY-MM-DD – <title>`,
+     parent folder **Learning log entries** (id
+     `1nlFHSDVpEwXIuZVqsKMI_kdP2jHmjKsu`, inside "Sacha Wellborn - OTJ Log").
+  3. Add the doc's link to the entry's frontmatter as `gdoc:` (not shown on
+     the site), then read the doc back to check it converted cleanly.
+  The connector can't edit a doc's contents or move files to the bin, so if
+  an entry changes, create a replacement doc, update `gdoc:`, and ask the
+  owner to delete the old one. If the connector isn't available, say so and
+  offer to create the doc in a later session.
 - **Cover graphics:** every log entry and project should have a cover.
   When writing or adding an entry, also draw one: a hand-authored SVG in
   `src/assets/covers/<entry-filename>.svg`, referenced via `cover:` and

@@ -55,7 +55,11 @@ ksbs:
 - **`time`** — hours and minutes spent (`2h 30m`, `45m` or `3h`). It shows
   next to the date, and all entries are totalled on
   [`/otj-log/`](https://testdept.co.uk/otj-log/), which also offers a CSV
-  download for the off-the-job hours spreadsheet.
+  download in the same columns as the *Off the job – weekly evidence*
+  spreadsheet, plus one CSV per week laid out as the full weekly form.
+- **`activityType`** — the sheet's *Type of Learning Activity* (e.g.
+  `TCG Session`, `Coaching / Mentoring`). Defaults to
+  `Portfolio Work (non-admin)`.
 - **`ksbs`** — the Knowledge, Skills and Behaviours from the apprenticeship
   standard (ST1512, listed in `src/data/ksbs.ts`) that the entry evidences,
   each with a sentence on why. Badges appear under the title, the

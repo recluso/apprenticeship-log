@@ -71,6 +71,7 @@ Each part of an entry comes from one field or section in its Markdown file:
 | --- | --- | --- |
 | Date badge | `date` | Also sets the entry's "Week commencing" group in the sidebar. |
 | Time badge | `time` | Written as `2h 30m`, `45m` or `3h`. Totalled on the [off-the-job log](/otj-log/). The default is `2h 30m`. |
+| — (OTJ CSVs only) | `activityType` | The evidence sheet's *Type of Learning Activity*, e.g. `TCG Session`, `TCG Set Tasks`, `Coaching / Mentoring`. Leave it out for the default, `Portfolio Work (non-admin)`. |
 | Title | `title` | Describe the topic only; the date is shown separately. |
 | Summary | `description` | Shown in lists and on the home page when this is the latest entry. |
 | KSB badges | `ksbs` → `code` | Blue = Knowledge, green = Skills, orange = Behaviours. Click one to jump to its explanation. |
@@ -87,6 +88,7 @@ title: 'What you actually covered'
 description: 'One-line summary of what you did and why it mattered.'
 date: 2026-09-29
 time: 2h 30m
+activityType: Portfolio Work (non-admin)
 tags: [topic, tool]
 cover: ../../../assets/covers/2026-09-29-short-title.svg
 coverAlt: 'One sentence describing what the cover image shows.'

@@ -3,6 +3,7 @@ title: 'First steps in cleaning CRM data, and prompting AI to help'
 description: 'Profiled a real CRM export to see what messy business data actually looks like, mapped out a safe cleaning workflow, and built a reusable prompt template for each stage.'
 date: 2026-09-24
 time: 2h 30m
+gdoc: https://docs.google.com/document/d/1szV54ahef4gjkzEPxBPG6lmfnUGEaquPkRgLJgom2gk/edit
 tags: [data-cleaning, crm, dynamics-365, prompting, data-protection]
 cover: ../../../assets/covers/2026-09-24-crm-data-cleaning-and-prompting.svg
 coverAlt: 'A profile of a CRM export showing 339 columns of which 137 are empty and about 76 hold one value, a seven-part prompt template, and a seven-step cleaning workflow from purpose to documentation with AI proposing and a person approving.'

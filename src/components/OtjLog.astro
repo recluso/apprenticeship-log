@@ -6,11 +6,20 @@ import { getDatedEntries } from '../utils/entries';
 import { formatMinutes, toDecimalHours } from '../utils/time';
 import { KSB_CODES } from '../data/ksbs';
 import KsbBadge from './KsbBadge.astro';
+import { groupByWeek, hhmm, totalMinutes as sumMinutes } from '../utils/otj';
 
 const entries = (await getDatedEntries()).reverse();
 const totalMinutes = entries.reduce((sum, entry) => sum + (entry.data.time ?? 0), 0);
 const missing = entries.filter((entry) => entry.data.time === undefined).length;
 const timed = entries.length - missing;
+const weeks = [...groupByWeek(entries)].reverse();
+const weekLabel = (monday: string) =>
+	new Date(`${monday}T00:00:00Z`).toLocaleDateString('en-GB', {
+		day: '2-digit',
+		month: '2-digit',
+		year: '2-digit',
+		timeZone: 'UTC',
+	});
 const shortDate = (date: Date) =>
 	date.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' });
 ---
@@ -22,9 +31,33 @@ const shortDate = (date: Date) =>
 	</p>
 	{missing > 0 && <p class="otj-missing">{missing} {missing === 1 ? 'entry has' : 'entries have'} no time recorded yet.</p>}
 	<p>
-		<a href="/otj-log.csv" download>Download as CSV</a> — opens in Google Sheets or Excel (File → Import).
+		<a href="/otj-log.csv" download>Download all entries as CSV</a> — rows in the same columns as the
+		weekly evidence sheet, ready to paste in.
 	</p>
 </div>
+
+<h2 id="weekly-evidence">Weekly evidence</h2>
+<p>
+	One CSV per week (Monday–Sunday), laid out as the full <em>Off the job – weekly evidence</em> form:
+	title, month and year, the activity table, total hours and declaration.
+</p>
+<ul class="otj-weeks">
+	{
+		weeks.map(([monday, weekEntries]) => (
+			<li>
+				<a href={`/otj-log/week-${monday}.csv`} download>
+					Week commencing {weekLabel(monday)}
+				</a>
+				<span class="muted">
+					{' '}— {weekEntries.length} {weekEntries.length === 1 ? 'entry' : 'entries'},{' '}
+					{hhmm(sumMinutes(weekEntries))}
+				</span>
+			</li>
+		))
+	}
+</ul>
+
+<h2 id="all-entries">All entries</h2>
 
 <div class="otj-table-wrap">
 	<table>
@@ -82,7 +115,9 @@ const shortDate = (date: Date) =>
 	}
 	.otj-table-wrap {
 		overflow-x: auto;
-		margin-top: 1.5rem;
+	}
+	.otj-weeks {
+		padding-left: 1.25rem;
 	}
 	table {
 		width: 100%;
