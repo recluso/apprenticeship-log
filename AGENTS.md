@@ -59,10 +59,14 @@ Starlight, deployed as static assets on Cloudflare Workers.
      `1nlFHSDVpEwXIuZVqsKMI_kdP2jHmjKsu`, inside "Sacha Wellborn - OTJ Log").
   3. Add the doc's link to the entry's frontmatter as `gdoc:` (not shown on
      the site), then read the doc back to check it converted cleanly.
-  The connector can't edit a doc's contents or move files to the bin, so if
-  an entry changes, create a replacement doc, update `gdoc:`, and ask the
-  owner to delete the old one. If the connector isn't available, say so and
-  offer to create the doc in a later session.
+  The folder is in The Coders Guild's shared drive, where the owner (and so
+  the connector) is only a Contributor: docs can be created, edited and
+  renamed, but **not deleted** — only TCG's managers can do that. So avoid
+  creating extra copies: check the HTML before uploading, and if an entry
+  changes later, only create a replacement doc when the owner asks. When
+  replacing, update `gdoc:` and rename the old doc to start with
+  "DUPLICATE – please delete –" so TCG can remove it. If the connector
+  isn't available, say so and offer to create the doc in a later session.
 - **Cover graphics:** every log entry and project should have a cover.
   When writing or adding an entry, also draw one: a hand-authored SVG in
   `src/assets/covers/<entry-filename>.svg`, referenced via `cover:` and
