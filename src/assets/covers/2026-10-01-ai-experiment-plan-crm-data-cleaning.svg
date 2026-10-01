@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1b1e2b"/>
+      <stop offset="1" stop-color="#11131b"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.3" cy="0.25" r="0.5">
+      <stop offset="0" stop-color="#8b95ff" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#8b95ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="560" height="420" rx="24" fill="url(#bg)"/>
+  <rect width="560" height="420" rx="24" fill="url(#glow)"/>
+
+  <!-- Controlled comparison: dataset A by hand vs dataset B with AI -->
+  <g transform="translate(36 36)">
+    <rect width="236" height="180" rx="12" fill="#232838" stroke="#3a4160"/>
+    <text x="18" y="30" fill="#8b93ad" font-size="12" font-family="ui-monospace, 'SF Mono', Menlo, monospace">fictional test data</text>
+    <line x1="0" y1="44" x2="236" y2="44" stroke="#3a4160"/>
+
+    <!-- Dataset A -->
+    <rect x="18" y="58" width="96" height="74" rx="8" fill="#1b1e2b" stroke="#3a4160"/>
+    <text x="30" y="80" fill="#e4e7f1" font-size="15" font-weight="700">A</text>
+    <text x="48" y="80" fill="#8b93ad" font-size="11">50 rows</text>
+    <g fill="#3a4160">
+      <rect x="30" y="90" width="72" height="4" rx="2"/>
+      <rect x="30" y="98" width="72" height="4" rx="2"/>
+      <rect x="30" y="106" width="72" height="4" rx="2"/>
+    </g>
+    <rect x="58" y="98" width="20" height="4" rx="2" fill="#ff7a85"/>
+    <text x="30" y="124" fill="#f5b85a" font-size="11" font-weight="600">by hand</text>
+
+    <!-- Dataset B -->
+    <rect x="122" y="58" width="96" height="74" rx="8" fill="#1b1e2b" stroke="#8b95ff" stroke-opacity="0.7"/>
+    <text x="134" y="80" fill="#e4e7f1" font-size="15" font-weight="700">B</text>
+    <text x="152" y="80" fill="#8b93ad" font-size="11">50 rows</text>
+    <g fill="#3a4160">
+      <rect x="134" y="90" width="72" height="4" rx="2"/>
+      <rect x="134" y="98" width="72" height="4" rx="2"/>
+      <rect x="134" y="106" width="72" height="4" rx="2"/>
+    </g>
+    <rect x="150" y="90" width="20" height="4" rx="2" fill="#ff7a85"/>
+    <text x="134" y="124" fill="#8b95ff" font-size="11" font-weight="600">with AI</text>
+
+    <!-- Answer key -->
+    <rect x="18" y="142" width="200" height="24" rx="6" fill="#1b1e2b" stroke="#6fe3c8" stroke-opacity="0.6"/>
+    <text x="118" y="158" fill="#6fe3c8" font-size="11" font-weight="600" text-anchor="middle">both scored against an answer key</text>
+  </g>
+
+  <!-- Success targets -->
+  <g transform="translate(288 36)">
+    <rect width="236" height="180" rx="12" fill="#232838" stroke="#3a4160"/>
+    <text x="18" y="30" fill="#8b93ad" font-size="12" font-family="ui-monospace, 'SF Mono', Menlo, monospace">success looks like</text>
+    <line x1="0" y1="44" x2="236" y2="44" stroke="#3a4160"/>
+    <g font-size="12">
+      <text x="18" y="70" fill="#6fe3c8" font-size="16" font-weight="700">≥ 90%</text>
+      <text x="84" y="70" fill="#c9cdd8">problems found</text>
+      <text x="18" y="96" fill="#f5b85a" font-size="16" font-weight="700">≤ 5%</text>
+      <text x="84" y="96" fill="#c9cdd8">false flags</text>
+      <text x="18" y="122" fill="#8b95ff" font-size="16" font-weight="700">−30%</text>
+      <text x="84" y="122" fill="#c9cdd8">time, incl. review</text>
+      <text x="18" y="148" fill="#c7a2ff" font-size="16" font-weight="700">0</text>
+      <text x="84" y="148" fill="#c9cdd8">unapproved merges</text>
+      <text x="18" y="170" fill="#8b93ad" font-size="11">+ same script repeats on A</text>
+    </g>
+  </g>
+
+  <!-- Staged route to a repeatable routine -->
+  <g transform="translate(36 232)">
+    <rect width="488" height="152" rx="12" fill="#232838" stroke="#8b95ff" stroke-opacity="0.55"/>
+    <text x="18" y="30" fill="#e4e7f1" font-size="15" font-weight="600">Route to a repeatable routine</text>
+    <text x="470" y="30" fill="#8b93ad" font-size="11" text-anchor="end">each stage needs approval</text>
+    <line x1="52" y1="68" x2="436" y2="68" stroke="#3a4160" stroke-width="2"/>
+    <g font-size="11" fill="#c9cdd8" text-anchor="middle">
+      <circle cx="52" cy="68" r="9" fill="#6fe3c8"/>
+      <text x="52" y="92">this test</text>
+      <text x="52" y="106" fill="#8b93ad" font-size="10">50 fictional</text>
+      <circle cx="148" cy="68" r="9" fill="#8b95ff"/>
+      <text x="148" y="92">larger test</text>
+      <text x="148" y="106" fill="#8b93ad" font-size="10">1,000s fictional</text>
+      <circle cx="244" cy="68" r="9" fill="#f5b85a"/>
+      <text x="244" y="92">real data</text>
+      <text x="244" y="106" fill="#8b93ad" font-size="10">run locally</text>
+      <circle cx="340" cy="68" r="9" fill="#c7a2ff"/>
+      <text x="340" y="92">sandbox</text>
+      <text x="340" y="106" fill="#8b93ad" font-size="10">CRM copy</text>
+      <circle cx="436" cy="68" r="9" fill="#ff7a85"/>
+      <text x="436" y="92">live CRM</text>
+      <text x="436" y="106" fill="#8b93ad" font-size="10">logged batches</text>
+    </g>
+    <line x1="18" y1="118" x2="470" y2="118" stroke="#3a4160"/>
+    <text x="244" y="140" fill="#8b93ad" font-size="12" text-anchor="middle">goal: membership data, <tspan fill="#e4e7f1" font-weight="700">~70,000</tspan> records, kept clean on repeat</text>
+  </g>
+</svg>
