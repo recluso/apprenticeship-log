@@ -4,7 +4,7 @@ description: 'Wrote a workplace experiment plan and a 60-second pitch for testin
 date: 2026-10-01
 time: 45m
 activityType: TCG Set Tasks
-gdoc: https://docs.google.com/document/d/1ePDL58_UnEWzDqcnb3Ggj-LEsLYBrtRNxfZsGhF2vTg/edit
+gdoc: https://docs.google.com/document/d/1_ALjpHMQvu6frt3EbVCtjW35O2Q6BSnRo2yuwzE8dYI/edit
 tags: [data-cleaning, crm, experiment-design, data-protection, prompting]
 cover: ../../../assets/covers/2026-10-01-ai-experiment-plan-crm-data-cleaning.svg
 coverAlt: 'Two 50-record fictional datasets, A cleaned by hand and B cleaned with AI, each scored against an answer key, beside the success targets, above a five-stage route from fictional data to the live CRM and a repeatable routine for about 70,000 membership records.'
