@@ -35,6 +35,10 @@ and drafted the guide; I asked the questions, made the decisions and
 corrected the requirements. Nothing is built yet: today was design and
 planning.
 
+:::note[Build guide]
+<a href="/downloads/2026-10-01-login-help-cards-guide.pdf" download>Download the login help cards build guide</a> (PDF, 15 pages): components, content model, templates, placement, permissions, testing, deployment and maintenance.
+:::
+
 ## What I did
 
 1. **Compared three approaches:**
